@@ -10,6 +10,11 @@ Public Sub CB_Precheck_Click()
     Call LoadPrecheck
 End Sub
 
+Public Sub CB_AppendFile_Click()
+    Me.Hide
+    Call AppendFile
+End Sub
+
 Public Sub CB_ChartSummary_Click()
     Me.Hide
     Call ChartSummary
