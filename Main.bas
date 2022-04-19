@@ -1135,7 +1135,7 @@ Public Sub ChartSummary()
     
     For i = 1 To ActiveWorkbook.Worksheets.Count
         If Worksheets(i).Name = nowSheet.Name Then Exit For
-        If Not isInArray(ActiveSheet.Name, sysArray) Then Worksheets(i).Activate
+        If Not isInArray(Worksheets(i).Name, sysArray) Then Worksheets(i).Activate
         If Not ActiveSheet.ChartObjects.Count = 0 Then
             Set oldSheet = ActiveSheet
             For k = 0 To oldSheet.ChartObjects.Count - 1
