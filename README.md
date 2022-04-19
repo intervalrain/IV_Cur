@@ -29,7 +29,7 @@ A Curve plot macro for Fab WAT system and Agilent 4156.
   + Generate *.PPT file automatically.
 + ManualFunction
   + Manual functions collection
-+ Ver. 6.2
++ Ver. 6.3
   + Show version log.
 
 # Copyright 
