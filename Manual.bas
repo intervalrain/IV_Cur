@@ -101,3 +101,58 @@ Public Sub trimSheet()
 
 
 End Sub
+
+
+Sub genWaferName()
+    
+    Dim nowSheet As Worksheet
+    Set nowSheet = Worksheets("Group")
+    
+    nowSheet.Cells(1, 1) = "SiteName"
+    nowSheet.Cells(1, 2) = "SetName"
+    
+    On Error GoTo Err
+    Dim i As Integer
+    For i = 0 To UBound(WaferArray, 2)
+        nowSheet.Cells(i + 2, 1) = WaferArray(0, i)
+        nowSheet.Cells(i + 2, 2) = WaferArray(0, i)
+    Next i
+Exit Sub
+Err:
+    MsgBox ("Try to Initial a rawdata sheet before this action.")
+End Sub
+
+Sub changeName()
+
+    Dim i As Integer
+    For i = 1 To Worksheets.Count
+        If Worksheets(i).Cells(1, 1) <> "VG" Then
+        Else
+            Worksheets(i).Range("H1225") = "Wfr, # 1A,Site"
+            Worksheets(i).Range("H1378") = "Wfr, # 1A,Site"
+            Worksheets(i).Range("H1531") = "Wfr, # 4A,Site"
+            Worksheets(i).Range("H1684") = "Wfr, # 4A,Site"
+        End If
+        Worksheets(i).Activate
+        Call Initial
+        
+    Next i
+    
+End Sub
+
+Function setWaferName(ByRef siteName As Object)
+    Dim nowSheet As Worksheet
+    If Not IsExistSheet("Group") Then Exit Function
+    Set nowSheet = Worksheets("Group")
+    
+    Dim i As Long
+    Dim n As Long
+    
+    On Error Resume Next
+    
+    For i = 2 To nowSheet.UsedRange.Rows.Count
+        If nowSheet.Cells(1, 1) = "" Then Exit For
+        siteName.Add nowSheet.Cells(i, 1).Value, nowSheet.Cells(i, 2).Value
+    Next i
+    
+End Function
